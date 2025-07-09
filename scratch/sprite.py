@@ -20,12 +20,13 @@ class Sprite:
     def stamp(self, transparency, size):
         self.costume = pygame.transform.rotate(self.costumePath, -self.dir)
         self.rect = self.costume.get_rect()
-        self.costume = pygame.transform.scale(self.costume, (self.rect.width * (size * 0.01), self.rect.height * (size * 0.01)))
-        self.rect.x, self.rect.y = convertCoords(self.x, self.y, self.rect)
+        self.costume = pygame.transform.scale(self.costume, (self.rect.width * (size * (self.gameEngine.width / 480) * 0.01), self.rect.height * (size * (self.gameEngine.height / 360) * 0.01)))
+        self.rect = self.costume.get_rect()
+        self.rect.x, self.rect.y = convertCoords(self.x, self.y, self.rect, self.gameEngine.width, self.gameEngine.height)
         self.costume.set_alpha(255 * (1 - transparency / 100))
         self.screen.blit(self.costume, self.rect)
 
-def convertCoords(x, y, rect, screenWidth = 480, screenHeight = 360):
+def convertCoords(x, y, rect, screenWidth, screenHeight):
     match rect:
         case "":
             x = (screenWidth / 2) + x
