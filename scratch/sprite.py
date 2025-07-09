@@ -29,9 +29,9 @@ class Sprite:
     def convertCoords(self, x, y, rect):
         match rect:
             case "":
-                x = (self.gameEngine.width / 2) + x
-                y = (self.gameEngine.height / 2) - y
+                x = (self.gameEngine.width / 2) + (x * (self.gameEngine.width / 480))
+                y = (self.gameEngine.height / 2) - (y * (self.gameEngine.height / 360))
             case _:
-                x = ((self.gameEngine.width / 2) + x) - (rect.width / 2)
-                y = ((self.gameEngine.height / 2) - y) - (rect.height / 2)
+                x = ((self.gameEngine.width / 2) + (x * (self.gameEngine.width / 480))) - (rect.width / 2)
+                y = ((self.gameEngine.height / 2) - (y * (self.gameEngine.height / 360))) - (rect.height / 2)
         return int(x), int(y)
