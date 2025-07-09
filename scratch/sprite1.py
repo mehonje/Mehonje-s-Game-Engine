@@ -1,4 +1,5 @@
 from sprite import Sprite
+import pygame
 
 class Sprite1(Sprite):
     def __init__(self, gameEngine, costume):
