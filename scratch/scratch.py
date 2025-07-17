@@ -38,6 +38,7 @@ class gameEngine:
 
     def tickGame(self):
         self.keys = pygame.key.get_pressed()
+        
         self.clock.tick(30)
 
     def paintGame(self):
